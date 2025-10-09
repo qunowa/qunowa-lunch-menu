@@ -58,6 +58,13 @@ function router() {
                 imageElement.alt = category.name;
                 imageElement.classList.add('title-image');
                 menuTitle.appendChild(imageElement);
+
+                if (category.description) {
+                    const descP = document.createElement('p');
+                    descP.textContent = category.description;
+                    descP.classList.add('title-description'); // 新しいクラスを追加
+                    menuTitle.appendChild(descP);
+                }
             } else {
                 menuTitle.textContent = category.name;
                 menuTitle.classList.add('text-category-title'); // クラスを追加
@@ -115,7 +122,38 @@ function renderCategories(categories, parentPath = '') {
         // 親パスがあれば連結して新しいパスを作成
         const newPath = parentPath ? `${parentPath}/${category.id}` : category.id;
         link.href = `#${newPath}`;
-        link.textContent = category.name;
+        link.classList.add('category-link-content'); // 新しいクラスを追加
+        
+        if (category.image) {
+            const imgContainer = document.createElement('div');
+            imgContainer.className = 'category-image-container';
+
+            const img = document.createElement('img');
+            img.src = category.image;
+            img.alt = category.name;
+            img.className = 'category-image';
+            imgContainer.appendChild(img);
+
+            if (category.textOverlay) {
+                const overlayText = document.createElement('div');
+                overlayText.className = 'category-image-overlay-text';
+                overlayText.textContent = category.textOverlay;
+                imgContainer.appendChild(overlayText);
+            }
+            link.appendChild(imgContainer);
+        }
+
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = category.name;
+        nameSpan.className = 'category-name-text';
+        link.appendChild(nameSpan);
+
+        if (category.description) {
+            const descP = document.createElement('p');
+            descP.textContent = category.description;
+            descP.className = 'category-description-text';
+            link.appendChild(descP);
+        }
         
         listItem.appendChild(link);
         list.appendChild(listItem);
@@ -138,14 +176,50 @@ function renderItems(items) {
         const itemElement = document.createElement('article');
         itemElement.className = 'item';
 
-        itemElement.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" class="item-image">
-            <div class="item-details">
-                <h3 class="item-name">${item.name}</h3>
-                <p class="item-description">${item.description}</p>
-                <p class="item-price">¥${item.price.toLocaleString()}</p>
-            </div>
-        `;
+        const imgContainer = document.createElement('div');
+        imgContainer.className = 'item-image-container';
+
+        const img = document.createElement('img');
+        img.src = item.image;
+        img.alt = item.name;
+        img.className = 'item-image';
+        if (item.opacity50) { // opacity50プロパティがあれば透過率を適用
+            img.classList.add('item-image-opacity-50');
+        }
+        imgContainer.appendChild(img);
+
+        if (item.textOverlay) {
+            const overlayText = document.createElement('div');
+            overlayText.className = 'item-image-overlay-text';
+            overlayText.textContent = item.textOverlay;
+            imgContainer.appendChild(overlayText);
+        }
+        itemElement.appendChild(imgContainer);
+
+        const itemDetails = document.createElement('div');
+        itemDetails.className = 'item-details';
+
+        const itemName = document.createElement('h3');
+        itemName.className = 'item-name';
+        itemName.textContent = item.name;
+        itemDetails.appendChild(itemName);
+
+        const itemDescription = document.createElement('p');
+        itemDescription.className = 'item-description';
+        itemDescription.textContent = item.description;
+        if (item.id === 'special-001') {
+            itemDescription.classList.add('item-description-pale-yellow');
+        }
+        itemDetails.appendChild(itemDescription);
+
+        if (item.price !== undefined) {
+            const itemPrice = document.createElement('p');
+            itemPrice.className = 'item-price';
+            itemPrice.textContent = `¥${item.price.toLocaleString()}`;
+            itemDetails.appendChild(itemPrice);
+        }
+
+        itemElement.appendChild(itemDetails);
         container.appendChild(itemElement);
     }
     app.appendChild(container);
