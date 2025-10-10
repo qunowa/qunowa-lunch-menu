@@ -19,8 +19,7 @@ function router() {
 
         if (menuData.siteConfig && menuData.siteConfig.mainLogo) {
             const logoImg = document.createElement('img');
-            // パスの各部分をエンコードして特殊文字に対応
-            logoImg.src = menuData.siteConfig.mainLogo.split('/').map(part => encodeURIComponent(part)).join('/');
+            logoImg.src = menuData.siteConfig.mainLogo;
             logoImg.alt = 'ロゴ';
             logoImg.className = 'main-title-logo';
             logoContainer.appendChild(logoImg);
@@ -53,8 +52,7 @@ function router() {
 
             if (category.titleImage) {
                 const imageElement = document.createElement('img');
-                // パスの各部分をエンコードして特殊文字に対応
-                imageElement.src = category.titleImage.split('/').map(part => encodeURIComponent(part)).join('/');
+                imageElement.src = category.titleImage;
                 imageElement.alt = category.name;
                 imageElement.classList.add('title-image');
                 menuTitle.appendChild(imageElement);
@@ -180,7 +178,7 @@ function renderItems(items) {
         imgContainer.className = 'item-image-container';
 
         const img = document.createElement('img');
-        img.src = item.image;
+        img.src = item.image.split('/').map(part => encodeURIComponent(part)).join('/');
         img.alt = item.name;
         img.className = 'item-image';
         if (item.opacity50) { // opacity50プロパティがあれば透過率を適用
