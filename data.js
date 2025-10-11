@@ -2,7 +2,7 @@ const menuData = {
     "ランチ": [
         {
             id: "sasimiteishoku",
-            name: "お刺身定食", 
+            name: "刺身定食", 
             img: "images/lunch menu/sasimiteishoku.png",
             description: "当店自慢！毎日変わる旬のおいしさを届けます",
             price: 1600
