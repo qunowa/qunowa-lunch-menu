@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>メニュー</title>
+    <title>qunowa お品書き</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1 id="menu-title">メニュー</h1>
+        <img src="images/taitoru-haikei/kyu.svg" alt="qunowa ロゴ" class="logo">
+        <h1>qunowa</h1>
+        <div class="tagline">
+            <p>qutte.</p>
+            <p>nonde.</p>
+            <p>waratte.</p>
+        </div>
     </header>
-    <main id="app">
-        <!-- ここにメニューが動的に表示されます -->
+
+    <main id="menu">
+        <!-- Menu categories will be inserted here by JavaScript -->
     </main>
-    <script src="menu.js"></script>
-    <script src="script.js"></script>
-    <div id="fixed-button-container"></div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
