@@ -9,18 +9,9 @@ if [ ! -f "$MENU_JSON_FILE" ]; then
 fi
 
 # JSONファイルを読み込み、JavaScriptの形式に変換してdata.jsを生成
-# jqコマンドを使用
-if ! command -v jq &> /dev/null
-then
-    echo "エラー: jqコマンドが見つかりません。jqをインストールしてください (例: brew install jq)"
-    exit 1
-fi
-
-JSON_CONTENT=$(cat "$MENU_JSON_FILE")
-
-cat <<EOF > "$DATA_JS_FILE"
-const menuData = 
-$(echo "$JSON_CONTENT" | jq .);
-EOF
+# jqコマンドに依存しない方法に変更
+echo "const menuData = " > "$DATA_JS_FILE"
+cat "$MENU_JSON_FILE" >> "$DATA_JS_FILE"
+echo ";" >> "$DATA_JS_FILE"
 
 echo "$DATA_JS_FILE が正常に生成されました。"
