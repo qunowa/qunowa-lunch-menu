@@ -36,5 +36,14 @@ const menuData =
             "description": "じっくり煮込み！極上の柔らかさ角煮定食。",
             "price": 1400
         }
+    ],
+    "ディナー": [
+        {
+            "id": "test_dinner_baguette",
+            "name": "テストディナーバゲット", 
+            "img": "images/dinner/test_dinner_baguette.jpg",
+            "description": "新しいカテゴリのテスト用バゲットです。",
+            "price": 2500
+        }
     ]
 };
