@@ -38,7 +38,7 @@
         {
             "id": "test_dish",
             "name": "テスト料理", 
-            "img": "images/lunch menu/test dish.jpg",
+            "img": "images/lunch menu/test_dish.jpg",
             "description": "新しいワークフローで追加されたテスト用の料理です。",
             "price": 999
         }
