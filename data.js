@@ -35,13 +35,6 @@ const menuData =
             "img": "images/lunch menu/butakakuni.png",
             "description": "じっくり煮込み！極上の柔らかさ角煮定食。",
             "price": 1400
-        },
-        {
-            "id": "test_dish",
-            "name": "テスト料理", 
-            "img": "images/lunch menu/test_dish.jpg",
-            "description": "新しいワークフローで追加されたテスト用の料理です。",
-            "price": 999
         }
     ]
 };
