@@ -37,6 +37,11 @@ document.addEventListener('DOMContentLoaded', function() {
             itemName.textContent = item.name;
             itemDetails.appendChild(itemName);
 
+            const itemPrice = document.createElement('p');
+            itemPrice.classList.add('menu-item-price'); // 新しいクラス名
+            itemPrice.textContent = `¥${item.price.toLocaleString()}`;
+            itemDetails.appendChild(itemPrice);
+
             menuItem.appendChild(itemDetails);
             
             // Append the item to the link, and the link to the grid
